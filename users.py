@@ -1,7 +1,7 @@
 import datetime
-
 import click
 
+comments = []
 
 class Users():
 	"""users class"""
@@ -33,3 +33,16 @@ class Users():
 				"option 2 clicked. call edit any implementation here"
 			if option == 3:
 				"option 3 clicked. call delete implementation here"
+
+	def admin_edit_comment(self, role, comment_id, new_comment):
+		"""Admin method to edit comments"""
+		if role != "admin":
+			click.echo('Only admin allowed!')
+		
+		if comments is None:
+			click.echo('No comments found!')
+
+		for comment in comments:
+			if comment.comment_id == comment_id:
+				comment.body = new_comment
+			click.echo(comment)
